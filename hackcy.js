@@ -80,7 +80,8 @@
       
       , permissions = "user_events, rsvp_event, publish_actions"
       , appId = "101469336666147"
-      , channelUrl = "http://localhost:8000/channel.html"
+      , host = "hackcyprus.github.com/"
+      , channelUrl = "http://" + host + "/channel.html"
       , eventId = "330480227040505"
       , cache = {};
 
