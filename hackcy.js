@@ -17,13 +17,7 @@
             if (payload.authResponse != null) {
                 cache.userID = payload.authResponse.userID;
                 getAttendees(function() {
-
-                    if (cache.attendees.indexOf(cache.userID) > -1) {
-                        $("#i-want-this-to-happen")
-                            .attr("disabled", "disabled")
-                            .html("YOU ARE ATTENDING AND AWESOME.");
-                    }
-
+                    if (cache.attendees.indexOf(cache.userID) > -1) hasAttended();
                     drawPictures();
                 });
             }   
@@ -62,6 +56,12 @@
                 $pics.append($("<img src='https://graph.facebook.com/" + id + "/picture'/>"));
             });
         }
+
+      , hasAttended = function() {
+            $("#i-want-this-to-happen")
+                .attr("disabled", "disabled")
+                .html("YOU ARE ATTENDING AND AWESOME.");
+        }
       
       , attend = function() {
             if (cache.attendees.indexOf(cache.userID) > -1) return;
@@ -82,6 +82,7 @@
             if (cache.userID != null) {
                 cache.attendees.push(cache.userID);
                 drawPictures();
+                hasAttended();
             }
         }
       
