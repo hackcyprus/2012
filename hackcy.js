@@ -65,17 +65,20 @@
       
       , attend = function() {
             if (cache.attendees.indexOf(cache.userID) > -1) return;
-            
+
             FB.api("/" + eventId + "/attending", "post", function(payload) {
                 var index = cache.attendees.indexOf(cache.userID)
                   , error = payload.error;
+
+                if (error == null) return;
+
+                if (index > -1) {
+                    cache.attendees.splice(index, 1);
+                    drawPictures();
+                }
+
                 if (error.code == 104) {
                     FB.login(onLogin, {scope: permissions});
-                } else if (error.code == 100) {
-                    if (index > -1) {
-                        cache.attendees.splice(index, 1);
-                        drawPictures();
-                    }
                 }
             });
             
@@ -88,7 +91,7 @@
       
       , permissions = "user_events, rsvp_event, publish_actions"
       , appId = "101469336666147"
-      , host = "hackcyprus.github.com"
+      , host = "http://hackcyprus.github.com"
       , channelUrl = "http://" + host + "/channel.html"
       , eventId = "330480227040505"
       , cache = {};
