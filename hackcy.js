@@ -18,8 +18,11 @@
                 cache.userID = payload.authResponse.userID;
                 getAttendees(function() {
 
-                    if (cache.attendees.indexOf(cache.userID) > -1)
-                        $("#i-want-this-to-happen").attr("disabled", "disabled");
+                    if (cache.attendees.indexOf(cache.userID) > -1) {
+                        $("#i-want-this-to-happen")
+                            .attr("disabled", "disabled")
+                            .html("YOU ARE ATTENDING AND AWESOME.");
+                    }
 
                     drawPictures();
                 });
