@@ -17,6 +17,10 @@
             if (payload.authResponse != null) {
                 cache.userID = payload.authResponse.userID;
                 getAttendees(function() {
+
+                    if (cache.attendees.indexOf(cache.userID) > -1)
+                        $("#i-want-this-to-happen").attr("disabled", "disabled");
+
                     drawPictures();
                 });
             }   
@@ -87,7 +91,7 @@
 
     window.fbAsyncInit = init;
 
-    $("#i_want_this_to_happen").on("click", function() {
+    $("#i-want-this-to-happen").on("click", function() {
         attend();
     });
 
