@@ -204,24 +204,32 @@ h2.manifesto {
     border:none;
     color:#ffffff;
     line-height: 1;
-    padding: 0.5em 1em 0.4em 1em;
-    vertical-align: middle;
     cursor: pointer;
     -webkit-font-smoothing: antialiased;
     margin-left: 1em;
-    color: #fff !important;
     background:rgba(110,192,207,1);
+    padding: 0;
+    vertical-align: middle;
   }
 
     #cta button b {
-      border-right:1px solid rgba(110,192,207,1);
-      padding-right: 0.875em;
-      margin-right: 0.5em;
+      background:rgba(96,168,181,1);
+      padding: 0.5em 1em 0.3em 1em;
       font-weight: 700;
+      float: left;
+      line-height: 1;
+    }
+
+    #cta button p {
+      float:left;
+      font-size: 1em;
+      padding: 0.5em 1em 0.3em 0.5em;
+      margin: 0;
+      font-weight: normal;
     }
 
   #cta button:hover {
-
+     box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
     }
 
 /* Supporter */
@@ -246,8 +254,8 @@ h2.manifesto {
     
     border:2px solid #ffffff;
     float: left;
-    width: 50px;
-    height: 50px;
+    width: 94px;
+    height: 94px;
     overflow: hidden;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
     margin-left: 1em;
@@ -258,7 +266,7 @@ h2.manifesto {
     }
 
     .supporter img {
-      max-height: 90px;
+      max-height: 100px;
       display: block;
     }
 
@@ -312,5 +320,10 @@ h2.manifesto {
 
 footer {
   border-top: 1px solid #dddddc;
-  padding: 3em 2em 3em 2em; 
+  padding: 3em 0;
 }
+
+  footer p {
+    padding: 0 6em;
+  }
+
