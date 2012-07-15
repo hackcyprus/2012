@@ -254,8 +254,8 @@ h2.manifesto {
     
     border:2px solid #ffffff;
     float: left;
-    width: 88px;
-    height: 88px;
+    width: 50px;
+    height: 50px;
     overflow: hidden;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
     margin-left: 1em;
@@ -320,9 +320,14 @@ h2.manifesto {
 
 footer {
   border-top: 1px solid #dddddc;
+<<<<<<< HEAD
   padding: 3em 0em 3em 0em; 
 }
 
   footer p {
     padding: 0 6em;
   }
+=======
+  padding: 3em 2em 3em 2em; 
+}
+>>>>>>> 185904cf3a2016e8dec7e85b284639a18aca6bd1
