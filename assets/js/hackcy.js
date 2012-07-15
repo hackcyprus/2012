@@ -30,17 +30,17 @@
 
     cache.attendees = [];
 
-    attendees.on("child_added", function(msgSnapshot) {
-        var id = msgSnapshot.name();
+    attendees.on("child_added", function(snapshot) {
+        var id = snapshot.name();
         cache.attendees.push(id);
         renderAttendees($picList, cache.attendees);
         if (!$pics.is(":visible")) $pics.show();
     });
 
-    attendees.on("child_removed", function(msgSnapshot) {
-        var id = msgSnapshot.name()
+    attendees.on("child_removed", function(snapshot) {
+        var id = snapshot.name()
           , index = cache.attendees.indexOf(id);
-        if (index > - 1) cache.attendes.splice(index, 1);
+        if (index > - 1) cache.attendees.splice(index, 1);
         renderAttendees(cache.attendees);
     });
 
