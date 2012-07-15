@@ -13,108 +13,116 @@
 
 (function(window, $) {
 
-    var onLogin = function(payload) {
-            if (payload.authResponse != null) {
-                cache.userID = payload.authResponse.userID;
-                getAttendees(function() {
-                    if (cache.attendees.indexOf(cache.userID) > -1) hasAttended();
-                    drawPictures();
-                });
-            }   
-        }
+    "use strict";
 
-      , onStatusChange = function(payload) {
-            if (payload.status != "connected") {
-                FB.login(onLogin, {scope: permissions});
-            } else {
-                onLogin(payload);
-            }
-        }
-      
-      , init = function() {
-            FB.init({
-                appId      : appId,
-                channelUrl : channelUrl,
-                status     : false,
-                cookie     : true,
-                xfbml      : true
-            });
-            FB.getLoginStatus(onStatusChange);
-            cache.attendees = [];
-        }
-
-      , getAttendees = function(callback) {
-            FB.api("/" + eventId + "/attending", function(payload) {
-                cache.attendees = $.map(payload.data, function(o) { return o.id; });
-                callback();
-            }); 
-        }
-      
-      , drawPictures = function() {
-            var $pics = $("#supporters #pics")
-              , $list = $pics.find("ul")
-              , $loader = $("#supporters #loader")
-              , $counter = $pics.find("#counter");
-
-            $counter.html(cache.attendees.length);
-            
-            $.each(cache.attendees, function(i, id) {
-                $list.append($(
-                      "<li class='supporter'>"
-                    +   "<a target='_blank' href='https://www.facebook.com/" + id + "'>"
-                    +     "<img src='https://graph.facebook.com/" + id + "/picture'/>"
-                    +   "</a>"
-                    + "</li>"
-                ));
-            });
-
-            $loader.hide();
-            $pics.show();
-        }
-
-      , hasAttended = function() {
-            $("#i-want-this-to-happen")
-                .attr("disabled", "disabled")
-                .html("YOU ARE ATTENDING AND AWESOME.");
-        }
-      
-      , attend = function() {
-            if (cache.attendees.indexOf(cache.userID) > -1) return;
-
-            FB.api("/" + eventId + "/attending", "post", function(payload) {
-                var index = cache.attendees.indexOf(cache.userID)
-                  , error = payload.error;
-
-                if (error == null) return;
-
-                if (index > -1) {
-                    cache.attendees.splice(index, 1);
-                    drawPictures();
-                }
-
-                if (error.code == 104) {
-                    FB.login(onLogin, {scope: permissions});
-                }
-            });
-            
-            if (cache.userID != null) {
-                cache.attendees.push(cache.userID);
-                drawPictures();
-                hasAttended();
-            }
-        }
-      
-      , permissions = "user_events, rsvp_event, publish_actions"
+    var permissions = "user_events, rsvp_event, publish_actions"
       , appId = "101469336666147"
       , host = "hackcyprus.github.com"
       , channelUrl = "http://" + host + "/channel.html"
       , eventId = "330480227040505"
-      , cache = {};
+      , cache = {}
+      , firebase = new Firebase('http://gamma.firebase.com/alexmic/')
+      , hackdb = firebase.child("hack_cyprus_2012")
+      , attendees = hackdb.child("attendees")
+      , $pics = $("#supporters #pics")
+      , $picList = $pics.find("ul")
+      , $counter = $pics.find("#counter");
 
-    window.fbAsyncInit = init;
+    cache.attendees = [];
+
+    attendees.on("child_added", function(msgSnapshot) {
+        var id = msgSnapshot.name();
+        cache.attendees.push(id);
+        renderAttendees($picList, cache.attendees);
+        if (!$pics.is(":visible")) $pics.show();
+    });
+
+    attendees.on("child_removed", function(msgSnapshot) {
+        var id = msgSnapshot.name()
+          , index = cache.attendees.indexOf(id);
+        if (index > - 1) cache.attendes.splice(index, 1);
+        renderAttendees(cache.attendees);
+    });
 
     $("#i-want-this-to-happen").on("click", function() {
-        attend();
+        FB.getLoginStatus(onStatusChange);
     });
+
+    var onLogin = function(payload) {
+        if (payload.authResponse != null) {
+            userID = payload.authResponse.userID;
+            // Check if user exists in Firebase and call
+            // the callback setting 'exists' appropriately.
+            userExists(userID, function(id, exists) {
+                if (exists) {
+                    hasAttended();
+                } else {
+                    attendees.child(id).set("attending");
+                    // Add to Facebook.
+                    FB.api("/" + eventId + "/attending", "post", function(payload) {
+                        if (payload.error) {
+                            alert("an error occured");
+                            // Be aggressive or not?
+                            // attendees.child(id).remove();
+                        } else {
+                            hasAttended(true);
+                        }
+                    });
+                }
+            });
+        } else {
+            alert("an error occured");
+        }
+    };
+
+    var userExists = function(userID, fn) {
+        attendees.child(userID).once('value', function(snapshot) {
+            var exists = (snapshot.val() != null);
+            fn(userID, exists);
+        });
+    };
+
+    var onStatusChange = function(payload) {
+        if (payload.status != "connected") {
+            FB.login(onLogin, {scope: permissions});
+        } else {
+            onLogin(payload);
+        }
+    };
+      
+    var init = function() {
+        FB.init({
+            appId: appId,
+            channelUrl: channelUrl,
+            status: false,
+            cookie: true,
+            xfbml: true
+        });
+    };
+
+    var hasAttended = function(first) {
+        var $btn = $("#i-want-this-to-happen");
+        $btn.attr("disabled", "disabled");
+        if (first) {
+            $btn.html("Thanks for supporting us!");
+        } else {
+            $btn.html("Already a supporter. Thanks again!");
+        }
+    };
+      
+    var renderAttendees = function(container, attendees) {
+        container.empty();
+        $.each(attendees, function(i, id) {
+            container.append($(
+                  "<li class='supporter'>"
+                +   "<a target='_blank' href='https://www.facebook.com/" + id + "'>"
+                +     "<img src='https://graph.facebook.com/" + id + "/picture'/>"
+                +   "</a>"
+                + "</li>"
+            ));
+        });
+    };
+
+    window.fbAsyncInit = init;
 
 })(window, jQuery);
