@@ -51,7 +51,7 @@
         }
       
       , drawPictures = function() {
-            var $pics = $("#pics").empty();
+            var $pics = $("#supporters").empty();
             $.each(cache.attendees, function(i, id) {
                 $pics.append($("<img src='https://graph.facebook.com/" + id + "/picture'/>"));
             });
