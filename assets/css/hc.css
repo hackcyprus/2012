@@ -183,6 +183,9 @@ h2.manifesto {
   width: 28em;
   margin: 0em auto 2em auto;
 }
+  h2 i {
+    font-style: italic;
+  }
 
 /* CTA */
 #cta {

@@ -50,10 +50,9 @@
 
     var onLogin = function(payload) {
         if (payload.authResponse != null) {
-            userID = payload.authResponse.userID;
             // Check if user exists in Firebase and call
             // the callback setting 'exists' appropriately.
-            userExists(userID, function(id, exists) {
+            userExists(payload.authResponse.userID, function(id, exists) {
                 if (exists) {
                     hasAttended();
                 } else {
@@ -111,12 +110,14 @@
     };
       
     var renderAttendees = function(container, attendees) {
+        $counter.html(attendees.length);
         container.empty();
-        $.each(attendees, function(i, id) {
+        // Show only 18 people. Random?
+        $.each(attendees.slice(0, 18), function(i, id) {
             container.append($(
                   "<li class='supporter'>"
                 +   "<a target='_blank' href='https://www.facebook.com/" + id + "'>"
-                +     "<img src='https://graph.facebook.com/" + id + "/picture'/>"
+                +     "<img src='https://graph.facebook.com/" + id + "/picture?type=large'/>"
                 +   "</a>"
                 + "</li>"
             ));
