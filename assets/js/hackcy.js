@@ -32,7 +32,10 @@
 
     attendees.on("child_added", function(snapshot) {
         var id = snapshot.name();
-        cache.attendees.push(id);
+        cache.attendees.unshift(id);
+        // If the child just added is the user on this page
+        // then change the button.
+        if (cache.uid != null && id == cache.uid) hasAttended(true);
         renderAttendees($picList, cache.attendees);
         if (!$pics.is(":visible")) $pics.show();
     });
@@ -48,24 +51,22 @@
         FB.getLoginStatus(onStatusChange);
     });
 
+    $("#i-want-this-to-happen-too").on("click", function() {
+        FB.getLoginStatus(onStatusChange);
+    });
+
     var onLogin = function(payload) {
         if (payload.authResponse != null) {
             // Check if user exists in Firebase and call
             // the callback setting 'exists' appropriately.
-            userExists(payload.authResponse.userID, function(id, exists) {
+            cache.uid = payload.authResponse.userID;
+            userExists(cache.uid, function(id, exists) {
                 if (exists) {
                     hasAttended();
                 } else {
                     attendees.child(id).set("attending");
-                    // Add to Facebook.
                     FB.api("/" + eventId + "/attending", "post", function(payload) {
-                        if (payload.error) {
-                            alert("an error occured");
-                            // Be aggressive or not?
-                            // attendees.child(id).remove();
-                        } else {
-                            hasAttended(true);
-                        }
+                        // Let errors go.
                     });
                 }
             });
@@ -112,7 +113,6 @@
     var renderAttendees = function(container, attendees) {
         $counter.html(attendees.length);
         container.empty();
-        // Show only 18 people. Random?
         $.each(attendees.slice(0, 18), function(i, id) {
             container.append($(
                   "<li class='supporter'>"
@@ -122,6 +122,7 @@
                 + "</li>"
             ));
         });
+        //container.effect("highlight", {}, 1000);
     };
 
     window.fbAsyncInit = init;

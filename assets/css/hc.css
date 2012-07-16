@@ -294,6 +294,12 @@ h2.manifesto {
   padding: 0 2em;
 }
 
+.fb-secondary {
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 /* Supporter */
 #supporters {
   padding: 0em 2em 3em 2em; 
