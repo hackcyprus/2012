@@ -391,8 +391,19 @@ footer {
   border-top: 1px solid #dddddc;
   padding: 3em 0;
 }
+  footer img {
+    margin: 0 auto;
+    display: block;
+  }
 
   footer p {
     padding: 0 6em;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #ababab;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 1em;
+    font-weight: 300;
   }
 
