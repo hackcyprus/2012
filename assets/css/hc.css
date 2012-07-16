@@ -282,21 +282,22 @@ h2.manifesto {
       font-weight: normal;
     }
 
-    #cta button.disabled {
-      padding: 0.5em 1em 0.3em 0.5em;
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      -o-box-shadow: none;
-      box-shadow: none;
-      background:rgba(126,194,206,1);
-    }
-
   #cta button:hover {
      -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
      -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
      -o-box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
      box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
     }
+
+  #cta button.disabled:hover {
+    padding: 0.5em 1em 0.3em 0.5em;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+    background:rgba(126,194,206,1);
+    cursor: default;
+  }
 
 /*Explanation*/
 #explanation {
