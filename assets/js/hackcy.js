@@ -98,7 +98,8 @@
 
     var hasAttended = function(first) {
         var $btn = $("#i-want-this-to-happen");
-        $btn.attr("disabled", "disabled");
+        $btn.attr("disabled", "disabled")
+            .addClass("disabled");
         if (first) {
             $btn.html("Thanks for supporting us!");
         } else {
@@ -118,7 +119,6 @@
                 + "</li>"
             ));
         });
-        //container.effect("highlight", {}, 1000);
     };
 
     window.fbAsyncInit = init;
