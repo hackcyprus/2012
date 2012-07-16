@@ -74,6 +74,15 @@ button {
   font-family: 'tablet-gothic', sans-serif;
 }
 
+
+@media only screen and (min-width: 35em) {
+    .grid_3 {
+      width: auto;
+      float: none;
+    }
+}
+
+
 /* Structural */
 .container {
   width: 960px;
@@ -406,4 +415,6 @@ footer {
     margin-bottom: 1em;
     font-weight: 300;
   }
+
+
 
