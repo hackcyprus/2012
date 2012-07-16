@@ -51,10 +51,6 @@
         FB.getLoginStatus(onStatusChange);
     });
 
-    $("#i-want-this-to-happen-too").on("click", function() {
-        FB.getLoginStatus(onStatusChange);
-    });
-
     var onLogin = function(payload) {
         if (payload.authResponse != null) {
             // Check if user exists in Firebase and call
