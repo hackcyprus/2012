@@ -17,9 +17,9 @@
 
     var permissions = "user_events, rsvp_event, publish_actions"
       , appId = "101469336666147"
-      , host = "hackcyprus.github.com"
+      , host = "hackcyprus.com"
       , channelUrl = "http://" + host + "/channel.html"
-      , eventId = "330480227040505"
+      , eventId = "326458734111682"
       , cache = {}
       , firebase = new Firebase('http://gamma.firebase.com/alexmic/')
       , hackdb = firebase.child("hack_cyprus_2012")
