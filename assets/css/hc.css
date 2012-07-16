@@ -47,6 +47,20 @@ table {
   border-spacing: 0;
 }
 
+
+::-moz-selection {
+    background: rgba(110,192,207,1);
+    text-shadow: none;
+    color: #ffffff;
+
+}
+
+::selection {
+    background: rgba(110,192,207,1);
+    text-shadow: none;
+    color: #ffffff;
+}
+
 body{
   background: ;
   font-family: 'tablet-gothic', sans-serif;
@@ -80,16 +94,27 @@ button {
 
 
 h3 {
-  font-size: 1.5em;
+  font-size: 1.875em;
   font-weight: 200;
-  text-transform: uppercase;
   text-align: center;
-  letter-spacing: 2px;
   margin: 0 0 1.5em 0;
+}
+
+h6 {
+  font-size: 1.25em;
+  font-weight: 200;
+  text-align: center;
+  margin: 0 0 1.5em 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 em {
   font-weight: 700;
+}
+span.highlight {
+  background: rgba(252,208,0,1);
+  display: inline-block;
 }
 
 a {
@@ -172,20 +197,38 @@ h1.logo {
   }  
   
   span.logo {
-    font-weight: 700;    
+    font-weight: 700;
+    text-transform: none;    
+  }
+
+  span.logo b {
+    font-weight: 300;
+  }
+
+
+  span.logo em {
+    color: rgba(110,192,207,1);
+
   }
 
 
 h2.manifesto {
-  font-size: 1.75em;
+  font-size: 1.875em;
   font-weight: 200;
   text-align: center;
   width: 28em;
-  margin: 0em auto 2em auto;
+  margin: 0em auto 1.875em auto;
 }
   h2 i {
     font-style: italic;
   }
+
+#more_info {
+  text-align: center;
+  display: block;
+  font-size: 1.25em;
+  margin-bottom: 2em;
+}
 
 /* CTA */
 #cta {
@@ -234,6 +277,22 @@ h2.manifesto {
   #cta button:hover {
      box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
     }
+/*Explanation*/
+#explanation {
+   padding: 4em 2.5em 0em 2.5em;
+}
+
+#explanation h3 {
+  font-size: 2em;
+}
+
+#explanation p{
+  font-size: 1.5em;
+  font-weight: 200;
+  text-align: center;
+  margin: 0em auto 1.875em auto;
+  padding: 0 2em;
+}
 
 /* Supporter */
 #supporters {
@@ -242,11 +301,12 @@ h2.manifesto {
   border-top: none; 
 }
   
-  #supporters h6 {
+  #supporters h4 {
     text-align: center;
     border-top: 1px dashed #dddddc;
     padding: 2em 0 1em 0;
     font-weight: 300;
+    font-size: 1.25em;
   }
 
   #supporters ul {
@@ -276,7 +336,7 @@ h2.manifesto {
 /* Details */
 
 #details {
-  padding: 4em 0;
+  padding: 3em 0 4em 0;
 }
 
   .detail h5 {
