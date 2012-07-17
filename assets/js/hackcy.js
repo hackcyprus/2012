@@ -17,9 +17,9 @@
 
     var permissions = "user_events, rsvp_event, publish_actions"
       , appId = "101469336666147"
-      , host = "hackcyprus.github.com"
+      , host = "hackcyprus.com"
       , channelUrl = "http://" + host + "/channel.html"
-      , eventId = "330480227040505"
+      , eventId = "326458734111682"
       , cache = {}
       , firebase = new Firebase('http://gamma.firebase.com/alexmic/')
       , hackdb = firebase.child("hack_cyprus_2012")
@@ -62,7 +62,7 @@
                 } else {
                     attendees.child(id).set("attending");
                     FB.api("/" + eventId + "/attending", "post", function(payload) {
-                        // Let errors go.
+                        console.log(payload);
                     });
                 }
             });
@@ -98,7 +98,8 @@
 
     var hasAttended = function(first) {
         var $btn = $("#i-want-this-to-happen");
-        $btn.attr("disabled", "disabled");
+        $btn.attr("disabled", "disabled")
+            .addClass("disabled");
         if (first) {
             $btn.html("Thanks for supporting us!");
         } else {
@@ -109,7 +110,7 @@
     var renderAttendees = function(container, attendees) {
         $counter.html(attendees.length);
         container.empty();
-        $.each(attendees.slice(0, 18), function(i, id) {
+        $.each(attendees.slice(0, 24), function(i, id) {
             container.append($(
                   "<li class='supporter'>"
                 +   "<a target='_blank' href='https://www.facebook.com/" + id + "'>"
@@ -118,7 +119,6 @@
                 + "</li>"
             ));
         });
-        //container.effect("highlight", {}, 1000);
     };
 
     window.fbAsyncInit = init;

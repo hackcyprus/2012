@@ -122,8 +122,7 @@ em {
   font-weight: 700;
 }
 span.highlight {
-  background: rgba(252,208,0,1);
-  display: inline-block;
+  font-weight: 500;
 }
 
 a {
@@ -284,8 +283,25 @@ h2.manifesto {
     }
 
   #cta button:hover {
+     -webkit-box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+     -moz-box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+     -o-box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
      box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
     }
+
+   #cta button.disabled {
+     padding: 0.5em 1em 0.3em 0.5em;
+     cursor: default;
+     background:rgba(126,194,206,1);
+   } 
+
+  #cta button.disabled:hover {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+  }
+
 /*Explanation*/
 #explanation {
    padding: 4em 2.5em 0em 2.5em;
@@ -393,6 +409,17 @@ h2.manifesto {
     *zoom: 1;
 }
 
+#counter {
+  font-size: 1.25em;
+}
+
+#cta #dont-worry {
+  color: #666;
+  font-weight: normal;
+  padding-top: 1em;
+  font-size: 0.875em;
+}
+
 /* Footer */
 
 
@@ -415,6 +442,3 @@ footer {
     margin-bottom: 1em;
     font-weight: 300;
   }
-
-
-
