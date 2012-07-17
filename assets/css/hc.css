@@ -345,23 +345,24 @@ h2.manifesto {
   }
 
   .supporter {
-    
     border:2px solid #ffffff;
     float: left;
-    width: 94px;
-    height: 94px;
+    width: 68px;
+    height: 68px;
     overflow: hidden;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
     margin-left: 1em;
     border-radius: 200px;
+    margin-bottom: 0.5em;
+    background: #ffffff;
   }
     .supporter a {
       display: block;
+    
     }
 
     .supporter img {
-      max-height: 100px;
-      display: block;
+      margin: -20px 0 0 -30px
     }
 
 /* Details */

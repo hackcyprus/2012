@@ -110,7 +110,7 @@
     var renderAttendees = function(container, attendees) {
         $counter.html(attendees.length);
         container.empty();
-        $.each(attendees.slice(0, 24), function(i, id) {
+        $.each(attendees.slice(0,200), function(i, id) {
             container.append($(
                   "<li class='supporter'>"
                 +   "<a target='_blank' href='https://www.facebook.com/" + id + "'>"
