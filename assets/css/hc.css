@@ -362,7 +362,8 @@ h2.manifesto {
     }
 
     .supporter img {
-      margin: -20px 0 0 -30px
+    width: 70px;
+    height: 70px;
     }
 
 /* Details */

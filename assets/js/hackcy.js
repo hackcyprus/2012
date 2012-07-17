@@ -114,7 +114,7 @@
             container.append($(
                   "<li class='supporter'>"
                 +   "<a target='_blank' href='https://www.facebook.com/" + id + "'>"
-                +     "<img src='https://graph.facebook.com/" + id + "/picture?type=large'/>"
+                +     "<img src='https://graph.facebook.com/" + id + "/picture?type=square'/>"
                 +   "</a>"
                 + "</li>"
             ));
