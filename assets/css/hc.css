@@ -413,6 +413,13 @@ h2.manifesto {
   font-size: 1.25em;
 }
 
+#cta #dont-worry {
+  color: #666;
+  font-weight: normal;
+  padding-top: 1em;
+  font-size: 0.875em;
+}
+
 /* Footer */
 
 
