@@ -62,7 +62,7 @@
                 } else {
                     attendees.child(id).set("attending");
                     FB.api("/" + eventId + "/attending", "post", function(payload) {
-                        // Let errors go.
+                        console.log(payload);
                     });
                 }
             });
