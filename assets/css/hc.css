@@ -27,7 +27,7 @@ time, mark, audio, video {
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
   display: block;
-}
+}#
 body {
   line-height: 1;
 }
@@ -231,6 +231,14 @@ h2.manifesto {
     font-style: italic;
   }
 
+h2.hyk-title {
+  font-size: 1.875em;
+  font-weight: 200;
+  text-align: center;
+  width: 28em;
+  margin: 0.2em auto 0.5em auto;
+}
+
 #more_info {
   text-align: center;
   display: block;
@@ -318,6 +326,47 @@ h2.manifesto {
   margin: 0em auto 1.875em auto;
   padding: 0 2em;
 }
+
+/* Hackathon Series */
+#description {
+   padding: 0 2em 2em 2em;
+}
+
+#description h3 {
+  font-size: 2em;
+}
+
+#description p {
+  font-size: 1.25em;
+  font-weight: 200;
+  margin: 0em auto 1em auto;
+  padding: 0 2em;
+}
+
+#description em {
+  font-size: 1em;
+  font-weight: 400;
+  font-style: italic;
+}
+
+  #description #quote {
+    position: relative;
+    color: #888;
+    font-style: italic;
+    margin-top: 3em;
+    margin-bottom: 4em;
+  }
+
+    #description #quote p.teller {
+      font-style: normal;
+      font-weight: 500;
+    }
+
+  #description #videos {
+    position: relative;
+    margin: 0 auto;
+    width: 800px;
+  }
 
 .fb-secondary {
   font-weight: 500;
