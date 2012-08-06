@@ -334,13 +334,13 @@ h2.hyk-title {
 
 #description h3 {
   font-size: 2em;
+  text-align: left;
 }
 
 #description p {
   font-size: 1.25em;
   font-weight: 200;
   margin: 0em auto 1em auto;
-  padding: 0 2em;
 }
 
 #description em {
