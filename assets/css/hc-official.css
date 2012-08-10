@@ -331,6 +331,8 @@ h1.logo.big {
   width: 200px;
   height: 100px;
   margin: 0px 15px 90px 15px;
+  overflow: hidden;
+  text-align: center;
 }
 
 #faq p.question {
