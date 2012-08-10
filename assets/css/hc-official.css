@@ -328,9 +328,9 @@ h1.logo.big {
   display: block;
   outline: none;
   border: none;
-  width: 200px;
+  width: 220px;
   height: 100px;
-  margin: 0px 15px 90px 15px;
+  margin: 0px 9px 90px 9px;
   overflow: hidden;
   text-align: center;
 }
