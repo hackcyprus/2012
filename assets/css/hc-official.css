@@ -243,6 +243,17 @@ h1.logo.big {
     font-size: 1.5em;
   }
 
+  #social-buttons {
+    width: 351px;
+    margin: 0 auto;
+  }
+
+  #social-buttons div, #social-buttons iframe{
+    margin:0;
+    padding: 0;
+    float: left;
+  }
+
 #btn-get-tickets {
     font-size: 1.5em;
     border: none;
