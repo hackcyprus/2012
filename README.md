@@ -1,4 +1,4 @@
-hackcyprus.github.com
-=====================
+2012
+====
 
-Hack Cyprus! 
+The first 2-day hackathon happened in Cyprus. People had fun. 
